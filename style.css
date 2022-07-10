@@ -1,0 +1,201 @@
+/* CSS RESET */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  /* footer support */
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  background-color: var(--grey);
+  color: var(--black);
+  font-family: 'Poppins', sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  word-wrap: break-word;
+  /* footer support */
+  margin-bottom: 100px;
+
+}
+
+button,
+input {
+  border: none;
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  cursor: pointer;
+  outline: none;
+}
+
+input[type='text'],
+input[type='number'] {
+  cursor: text;
+}
+
+/* CSS START */
+@font-face{
+    font-family: Poppins;
+    src: url(./fonts/Poppins-Regular.ttf);
+    font-weight: 400;
+}
+@font-face{
+    font-family: Poppins;
+    src: url(./fonts/Poppins-Medium.ttf);
+    font-weight: 500;
+}
+@font-face{
+    font-family: Poppins;
+    src: url(./fonts/Poppins-SemiBold.ttf);
+    font-weight: 600;
+}
+@font-face{
+  font-family: Poppins;
+  src: url(./fonts/Poppins-Bold.ttf);
+  font-weight: 900;
+}
+html {
+    font-family: Poppins;
+}
+
+body {
+  background: rgb(248, 211, 0);
+  display: grid;
+  max-width: 1200px;  
+  align-self: center;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow:rgba(0, 0, 0) 0px 1px 4px;
+
+}
+
+.header {
+    font-size: 30px;
+    background: royalblue;
+    font-weight: 900;
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    box-shadow:rgba(0, 0, 0) 0px 1px 4px;
+    z-index: 998;
+    flex-grow: 0;
+
+}
+
+#new-book-button {
+  font-size: 20px;
+  background: rgb(78, 120, 243);
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 5px 0px white;
+}
+#new-book-button:hover {
+  background: rgb(55, 85, 175);
+  transition: 0.3s;
+
+}
+
+#library {
+    display: grid;
+    padding: 20px;
+    gap: 20px;
+    grid-auto-rows: min-content;
+    grid-template-rows:repeat(5, minmax(250px,1fr)) ;
+    grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
+    background: rgb(240, 240, 240);
+    min-height: 800px;
+}
+
+.book-container{
+  background: white;
+  display: grid;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px 0px gray;
+  padding: 20px;
+}
+
+.book-container:hover{
+  box-shadow: 0px 0px 5px 0px royalblue;
+}
+.book-container>*{
+  text-align: center;
+  align-self: center;
+  border-radius: 5px;
+}
+
+.book-title {
+  font-size: 25px;
+}
+
+.book-read {
+  min-height: 40px;
+  transition: filter 0.15s;
+}
+
+.book-read:hover {
+  filter: brightness(90%);
+}
+
+.remove-book {
+  min-height: 40px;
+  transition: filter 0.15s;
+}
+
+.remove-book:hover {
+  filter: brightness(90%);
+}
+.form-card {
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  border-radius: 10px;
+  justify-content: space-between;
+  position: fixed;
+  z-index: 999;
+  top: 50%;
+  left: 50%;
+  width: 300px;
+  transform: translate(-50%, -50%) scale(0);
+  background: white;
+  transition: 0.5s;
+}
+
+.form-card > * {
+  padding: 10px;
+}
+
+#new-title, #new-author, #new-pages {
+  background: rgb(248, 248, 248);
+  border-radius: 10px;
+  height: 40px;
+}
+.overlay {
+  position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    transform:scale(0);
+    z-index: 998;
+}
+
+.overlay.active {
+  transform: scale(1);
+}
+
+.form-card.active {
+  transform: translate(-50%, -50%) scale(1);
+}
