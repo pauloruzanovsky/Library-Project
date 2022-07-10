@@ -110,7 +110,7 @@ body {
     padding: 20px;
     gap: 20px;
     grid-auto-rows: min-content;
-    grid-template-rows:repeat(5, minmax(250px,1fr)) ;
+    grid-template-rows:repeat(4, minmax(250px,1fr)) ;
     grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
     background: rgb(240, 240, 240);
     min-height: 800px;
@@ -119,6 +119,7 @@ body {
 .book-container{
   background: white;
   display: grid;
+  gap: 30px;
   border-radius: 5px;
   box-shadow: 0px 0px 5px 0px gray;
   padding: 20px;
@@ -135,6 +136,7 @@ body {
 
 .book-title {
   font-size: 25px;
+  overflow:hidden;
 }
 
 .book-read {

@@ -4,11 +4,12 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
   <script src="./js-file.js" defer></script> 
   <link rel="stylesheet" href="./style.css">
+  <title>ruza's library</title>
 </head>
 <body>
+
   <div class="header">
     <div>ruza's library</div>
     <button id="new-book-button">new book</button>
@@ -16,8 +17,8 @@
   <div id="library"></div>
   <div class="overlay"></div>
   <form class="form-card">
-      <input type="text" id="new-title" placeholder="Title" required>
-      <input type="text" id="new-author" placeholder="Author" required>
+      <input type="text" id="new-title" placeholder="Title" maxlength="100" required>
+      <input type="text" id="new-author" placeholder="Author" maxlength="100"required>
       <input type="number" id="new-pages" placeholder="Pages" required>
       <div class="readRow">
         <input type="checkbox" id="new-read" name="read">

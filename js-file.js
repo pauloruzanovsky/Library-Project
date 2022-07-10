@@ -7,21 +7,21 @@ const submitButton = document.querySelector('#submit-form');
 
 // placeholder books
 let book1 = {
-  title: 'Harry Potter',
-  author: 'JK Rowling',
-  pages: 555,
+  title: 'Harry Potter and the Goblet of Fire',
+  author: 'J. K. Rowling',
+  pages: 636,
   read: 'Not Read'
 }
 let book2 = {
-  title: 'Percy Jackson',
-  author: 'Rick Riordan',
-  pages: 333,
+  title: 'The Fellowship of the Ring',
+  author: 'J. R. R. Tolkien',
+  pages: 423,
   read: 'Read'
 }
 let book3 = {
-  title: 'Lord of the Rings',
-  author: 'Tolkien',
-  pages: 893,
+  title: 'The Shining',
+  author: 'Stephen King',
+  pages: 447,
   read: 'Not Read'
 }
 myLibrary.push(book1, book2, book3);
@@ -52,7 +52,7 @@ function createLibrary() {
 
     const bookPages = document.createElement('div');
     bookPages.classList.add('book-pages');
-    bookPages.textContent = myLibrary[i].pages;
+    bookPages.textContent = myLibrary[i].pages + ' pages';
     bookContainer.appendChild(bookPages);
 
     const bookRead = document.createElement('button');
