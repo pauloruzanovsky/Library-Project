@@ -138,7 +138,6 @@ const addBook = (e) => {
 }
 submitButton.addEventListener('click',addBook);
 
-
 // Changes read status on click
 function toggleRead() {
   const readButton = document.querySelectorAll('.book-read');
