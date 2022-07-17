@@ -5,33 +5,40 @@ const formCard = document.querySelector('.form-card');
 const overlay = document.querySelector('.overlay');
 const submitButton = document.querySelector('#submit-form');
 
+
+class Book {
+  constructor(title, author, pages, isRead) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.isRead = isRead;
+  }
+}
+
 // placeholder books
-let book1 = {
-  title: 'Harry Potter and the Goblet of Fire',
-  author: 'J. K. Rowling',
-  pages: 636,
-  read: 'Not Read'
-}
-let book2 = {
-  title: 'The Fellowship of the Ring',
-  author: 'J. R. R. Tolkien',
-  pages: 423,
-  read: 'Read'
-}
-let book3 = {
-  title: 'The Shining',
-  author: 'Stephen King',
-  pages: 447,
-  read: 'Not Read'
-}
+let book1 = new Book('Harry Potter and the Goblet of Fire', 'J. K. Rowling', 636,'Not Read')
+let book2 = new Book('The Fellowship of the Ring','J. R. R. Tolkien',423,'Read')
+let book3 = new Book('The Shining','Stephen King',447,'Not Read')
 myLibrary.push(book1, book2, book3);
 
 // Opens the form when user clicks the 'new book' button
 function openForm() {
   formCard.classList.add('active');
   overlay.classList.add('active');
-}
+} 
 newBookButton.addEventListener('click',openForm);
+
+// Closes the form if ESC or mouse click on overlay
+function closeForm() {
+  formCard.classList.remove('active');
+  overlay.classList.remove('active');
+}
+overlay.addEventListener('click', closeForm);
+window.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    closeForm();
+  }
+})
 
 /*This for loop creates elements for each book object in myLibrary array*/
 function createLibrary() {
@@ -57,7 +64,7 @@ function createLibrary() {
 
     const bookRead = document.createElement('button');
     bookRead.classList.add('book-read');
-    bookRead.textContent = myLibrary[i].read;
+    bookRead.textContent = myLibrary[i].isRead;
     if(bookRead.textContent === 'Read') {
       bookRead.style.backgroundColor = 'aquamarine'
     } else {
@@ -101,35 +108,21 @@ removeButton.forEach(function(button) {
 
 }
 
-// Closes the form if ESC or mouse click on overlay
-function closeForm() {
-  formCard.classList.remove('active');
-  overlay.classList.remove('active');
-}
-overlay.addEventListener('click', closeForm);
-window.addEventListener('keydown', function(e) {
-  if (e.key === 'Escape') {
-    closeForm();
-  }
-})
-
 // Sends form input to library array when user presses submit
 const addBook = (e) => {
-
   if(document.querySelector('form').checkValidity()){
   e.preventDefault();
-  let book = {
-    title: document.getElementById('new-title').value,
-    author: document.getElementById('new-author').value,
-    pages: document.getElementById('new-pages').value,
-    read: document.getElementById('new-read').checked,
-  }
-  if(book.read) {
-    book.read = 'Read';
+  let book = new Book(
+                        document.getElementById('new-title').value,
+                        document.getElementById('new-author').value,
+                        document.getElementById('new-pages').value,
+                        document.getElementById('new-read').checked,
+  )
+  if(book.isRead) {
+    book.isRead = 'Read';
   } else {
-    book.read = 'Not Read';
+    book.isRead = 'Not Read';
   }
-  console.log(book);
   myLibrary.push(book);
   document.forms[0].reset();
   closeForm();
@@ -137,7 +130,6 @@ const addBook = (e) => {
 }
 }
 submitButton.addEventListener('click',addBook);
-
 
 // Changes read status on click
 function toggleRead() {
@@ -149,8 +141,7 @@ function toggleRead() {
         return button.textContent = 'Not Read'
       }
       button.style.backgroundColor = 'aquamarine';
-
-        return button.textContent = 'Read'
+      return button.textContent = 'Read'
       }
     )
   })
